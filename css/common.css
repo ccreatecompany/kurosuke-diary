@@ -152,7 +152,7 @@ html {
 .left a.button {
     display: inline-block;
     text-align: center;
-    background: url(../img/btn_menu.png") no-repeat center / contain;
+    background: url(../img/btn_menu.png") no-repeat center / contain !important;
     color: #0E6EB8;
     padding: 10px 0;
     text-decoration: none;
