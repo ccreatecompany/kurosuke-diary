@@ -499,7 +499,7 @@ html {
     margin-left: -40px;
     margin-right: -40px;
     padding: 0;
-    background: url('bg_kuro.png') center/cover no-repeat;
+    background: url('../img/bg_kuro.png') center/cover no-repeat;
     box-sizing: border-box;
     padding: 160px 0;
 }
@@ -621,7 +621,7 @@ section#favorite p {
     height: 60px;
     line-height: 60px;
     text-align: center;
-    background: url("btn_menu.png") no-repeat center / contain;
+    background: url("../img/btn_menu.png") no-repeat center / contain;
     color: #0E6EB8;
     text-decoration: none;
     font-weight: bold;
