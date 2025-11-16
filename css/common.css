@@ -1,0 +1,694 @@
+/* ========== 全体基本 ========== */
+body,
+html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: sans-serif;
+    background-color: #fafafa;
+    overflow: hidden;
+}
+
+.main-wrapper,
+body,
+html {
+    overflow: visible;
+}
+
+
+/* --- TOPボタン --- */
+#backTopBtn {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    text-align: center;
+    cursor: pointer;
+    z-index: 9999;
+    opacity: 0;
+    /* 初期は非表示 */
+    pointer-events: none;
+    /* 初期はクリック不可 */
+    transition: opacity 0.3s;
+    /* フェード用 */
+}
+
+#backTopBtn .arrow-circle {
+    width: 55px;
+    height: 55px;
+    background-color: #17D1FF;
+    border-radius: 50%;
+    position: relative;
+}
+
+#backTopBtn .arrow-circle::before {
+    content: "";
+    position: absolute;
+    top: 18px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 14px solid #fff;
+    /* 白い三角 */
+}
+
+#backTopBtn span {
+    display: inline-block;
+    margin-top: 6px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #17D1FF;
+    background: #fff;
+    padding: 4px 10px;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+
+/* ========== タイトル装飾 ========== */
+.title-blue {
+    position: relative;
+    display: inline-block;
+    font-size: 1.5rem;
+    color: #0E6EB8;
+    font-weight: bold;
+    text-align: center;
+    margin: 1em auto;
+}
+
+.title-blue::before,
+.title-blue::after {
+    content: "";
+    display: inline-block;
+    width: 10px;
+    height: 3px;
+    background-color: #0E6EB8;
+    vertical-align: middle;
+    margin: 0 10px;
+}
+
+/* ========== レイアウト構造 ========== */
+.container {
+    display: flex;
+    height: 100vh;
+    width: 100%;
+}
+
+
+
+
+
+/* 左カラム */
+.left {
+    width: 33.33%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background: #fff url(img/bg_left.jpg) center/cover no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.left-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 30%;
+}
+
+/* PICKUP */
+.pickup {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    width: 80%;
+    margin-bottom: 20px;
+}
+
+.pickup-item {
+    text-align: center;
+}
+
+.pickup img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    transition: transform 0.3s;
+}
+
+.pickup img:hover {
+    transform: scale(1.4);
+}
+
+.pickup-text {
+    margin-top: 8px;
+    font-size: 0.9rem;
+    color: #333;
+    font-weight: 500;
+}
+
+.left a.button {
+    display: inline-block;
+    text-align: center;
+    background: url("img/btn_menu.png") no-repeat center / contain;
+    color: #0E6EB8;
+    padding: 10px 0;
+    text-decoration: none;
+    width: 80%;
+    margin-top: 20px;
+    transition: transform 0.3s;
+}
+
+.left a.button:hover {
+    transform: scale(1.05);
+}
+
+/* 中央スクロールカラム */
+.center {
+    width: 33.33%;
+    margin-left: 33.33%;
+    margin-right: 33.33%;
+    height: 100vh;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    background: linear-gradient(to bottom,
+            #D9F8C8 0%,
+            #D9F8C8 20%,
+            #E8FCE4 40%,
+            #FFFFFF 100%);
+    box-shadow: -20px 0 40px rgba(0, 0, 0, 0.25), 20px 0 40px rgba(0, 0, 0, 0.25);
+    border-left: 2px solid #6ebeff;
+    border-right: 2px solid #6ebeff;
+    z-index: 2;
+}
+
+.center::-webkit-scrollbar {
+    display: none;
+}
+
+
+/* ====== クロちゃんとは？ ====== */
+#who-is-kuro {
+    padding: 40px;
+    background: #fff;
+    height: auto;
+    border-radius: 16px;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.6s ease-out;
+}
+
+#who-is-kuro.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+#who-is-kuro .kuro-inner {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    max-width: 900px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+}
+
+/* 画像部分 */
+#who-is-kuro .kuro-visual {
+    flex: 1 1 40%;
+    min-width: 280px;
+}
+
+#who-is-kuro .kuro-visual img {
+    width: 100%;
+    height: auto;
+    transition: transform 0.3s ease;
+}
+
+#who-is-kuro .kuro-visual img:hover {
+    transform: scale(1.05);
+}
+
+
+#who-is-kuro .kuro-text {
+    flex: 1 1 50%;
+    min-width: 280px;
+    text-align: left;
+}
+
+#who-is-kuro .kuro-text p {
+    font-size: 1rem;
+    line-height: 1.7;
+    text-align: left;
+    color: #444;
+}
+
+
+
+/* 中央のコンテンツエリア */
+.center-content {
+    max-width: 900px;
+    padding: 0 40px;
+}
+
+/* 各セクション */
+.center-content section {
+    height: 60vh;
+    margin-bottom: 40px;
+    background: #fff;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.6s ease-out;
+}
+
+.center-content section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.center-content section h2 {
+    font-size: 1.2em;
+    margin-bottom: 16px;
+}
+
+.center-content section p {
+    color: #666;
+    line-height: 1.7;
+    max-width: 100%;
+    text-align: center;
+}
+
+.mainview {
+    background: #c9e2f9;
+    background-image: radial-gradient(circle, #6ebeff 5px, transparent 5px);
+    background-position: 0 0;
+    background-size: 20px 20px;
+    height: 92vh;
+}
+
+.center #mainview {
+    border-radius: 0;
+}
+
+
+
+.center-content #mainview,
+.center-content #down-time {
+    padding: 0;
+}
+
+
+.center #mainview {
+    width: calc(100% + 40px * 2);
+    margin-left: -40px;
+    margin-right: -40px;
+    padding: 0;
+    background: linear-gradient(to bottom,
+            #D5F3FE 0%,
+            #E4F9FF 30%,
+            #F6FFF2 60%,
+            #D9F8C8 100%);
+    box-sizing: border-box;
+    /* background-image: url(bg_main.png) center/contain no-repeat; */
+    height: 92vh;
+}
+
+
+.center #mainview img {
+    width: 80%;
+}
+
+
+
+.center #yesterday,
+.center #today {
+    border: 2px dotted #17D1FF;
+    background: #fff;
+}
+
+.center-content #yesterday,
+.center-content #today {
+    border: 2px dotted #17D1FF;
+    background: #fff;
+    padding: 16px;
+    box-sizing: border-box;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.center-content #yesterday h2,
+.center-content #today h2 {
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+    padding-left: 20px;
+}
+
+.center-content #yesterday .yesterday-content,
+.center-content #today .today-content {
+    position: relative;
+    padding: 8px;
+}
+
+.center-content #yesterday .mood,
+.center-content #today .mood {
+    position: absolute;
+    top: -50px;
+    right: 8px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 4px 6px;
+    border-radius: 12px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.center-content #yesterday .mood-label,
+.center-content #today .mood-label {
+    font-size: 0.8rem;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.center-content #yesterday .mood-icon,
+.center-content #today .mood-icon {
+    width: 40px;
+    height: 40px;
+}
+
+.center-content #yesterday .yesterday-content p,
+.center-content #today .today-content p {
+    font-size: 0.9rem;
+    line-height: 1.4;
+    margin-bottom: 8px;
+}
+
+.center-content #favorite .main-photo {
+    width: 90%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 40px;
+    border-radius: 8px;
+}
+
+.center-content #yesterday .yesterday-content .main-photo,
+.center-content #today .today-content .main-photo {
+    width: 90%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 40px;
+    border-radius: 8px;
+    position: relative;
+    top: 35px;
+}
+
+
+
+
+/* ====== ちょっといいこと ====== */
+.center-content #good-thing {
+    padding: 40px 20px;
+    background: #f5faff;
+    height: auto;
+
+}
+
+.center-content #good-thing .good-inner {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    max-width: 900px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+}
+
+.center-content #good-thing .good-visual {
+    flex: 1 1 40%;
+    min-width: 280px;
+}
+
+.center-content #good-thing .good-visual img {
+    width: 60%;
+    height: auto;
+    margin: 0 auto;
+    display: block;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease-out;
+}
+
+.center-content #good-thing .good-text {
+    flex: 1 1 50%;
+    min-width: 280px;
+    text-align: center;
+}
+
+.center-content #good-thing .good-text .title-blue {
+    font-size: 1.4rem;
+    margin-bottom: 24px;
+    display: inline-block;
+    position: relative;
+}
+
+.center-content #good-thing .good-text .title-blue::before,
+.center-content #good-thing .good-text .title-blue::after {
+    content: "";
+    display: inline-block;
+    width: 14px;
+    height: 4px;
+    background-color: #0E6EB8;
+    vertical-align: middle;
+    margin: 0 12px;
+}
+
+.center-content #good-thing .good-text p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #444;
+    margin-bottom: 0;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease-out;
+}
+
+/* スクロール時アニメーション */
+.center-content #good-thing.visible .good-visual img,
+.center-content #good-thing.visible .good-text p,
+.center-content #good-thing.visible .good-text .title-blue {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+
+
+.center #down-time {
+    width: calc(100% + 40px * 2);
+    margin-left: -40px;
+    margin-right: -40px;
+    padding: 0;
+    background: url('bg_kuro.png') center/cover no-repeat;
+    box-sizing: border-box;
+    padding: 160px 0;
+}
+
+
+
+.center #down-time h2 {
+    font-size: 2rem;
+    color: #fff;
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+#down-time {
+    display: block !important;
+}
+
+#down-time .down-inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: nowrap;
+    margin-top: 20px;
+    padding: 10px;
+}
+
+#down-time .cat-image img {
+    width: 200px;
+    height: auto;
+    transform: rotate(-20deg);
+    transition: transform 0.3s ease;
+}
+
+#down-time .cat-image img:hover {
+    transform: rotate(-15deg) scale(1.05);
+}
+
+#down-time .down-text {
+    max-width: 400px;
+    text-align: left;
+}
+
+#down-time .down-text p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #fff;
+}
+
+
+
+section#favorite {
+    padding: 40px 0 20px 0;
+}
+
+
+section#favorite p {
+    font-size: 1.0rem;
+}
+
+
+.rolling-img {
+    position: absolute;
+    bottom: 20px;
+    right: -100px;
+    width: 100px;
+    animation: rollMove 12s linear infinite;
+}
+
+.space-14 {
+    margin-bottom: 140px;
+}
+
+
+
+@keyframes rollMove {
+    0% {
+        transform: translateX(0) rotate(0deg);
+    }
+
+    100% {
+        transform: translateX(-120vw) rotate(-1080deg);
+    }
+}
+
+
+
+/* 右カラム */
+.right {
+    width: 33.33%;
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100%;
+    background: #fff url(img/bg_right.jpg) center/cover no-repeat;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s;
+}
+
+.right img {
+    width: 40%;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    transition: transform 0.3s;
+}
+
+.menu-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 30px;
+}
+
+.menu-list a {
+    display: inline-block;
+    width: 200px;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+    background: url("btn_menu.png") no-repeat center / contain;
+    color: #0E6EB8;
+    text-decoration: none;
+    font-weight: bold;
+    transition: transform 0.2s;
+}
+
+.menu-list a:hover {
+    transform: scale(1.05);
+}
+
+/* スマホ */
+.hamburger {
+    display: none;
+}
+
+@media (max-width: 768px) {
+
+    body,
+    html {
+        overflow: auto;
+    }
+
+    .container {
+        display: block;
+        height: auto;
+    }
+
+    .left,
+    .right {
+        display: none;
+    }
+
+    .center {
+        width: 100%;
+        margin: 0;
+        height: auto;
+        overflow: visible;
+    }
+
+    .pickup-mobile {
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    .hamburger {
+        display: block;
+        position: fixed;
+        top: 16px;
+        right: 16px;
+        width: 28px;
+        height: 22px;
+        cursor: pointer;
+        z-index: 999;
+    }
+
+    .hamburger span {
+        display: block;
+        height: 3px;
+        background: #333;
+        margin: 5px 0;
+        border-radius: 2px;
+    }
+
+
+    .center-content #good-thing .good-inner {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+}
