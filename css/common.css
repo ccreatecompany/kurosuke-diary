@@ -105,7 +105,7 @@ html {
     top: 0;
     left: 0;
     height: 100%;
-    background: #fff url(../img/bg_left.jpg) center/cover no-repeat;
+    background: #fff url(bg_left.jpg) center/cover no-repeat;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -152,7 +152,7 @@ html {
 .left a.button {
     display: inline-block;
     text-align: center;
-    background: url("img/btn_menu.png") no-repeat center / contain;
+    background: url(btn_menu.png") no-repeat center / contain;
     color: #0E6EB8;
     padding: 10px 0;
     text-decoration: none;
@@ -594,7 +594,7 @@ section#favorite p {
     top: 0;
     right: 0;
     height: 100%;
-    background: #fff url(../img/bg_right.jpg) center/cover no-repeat;
+    background: #fff url(img/bg_right.jpg) center/cover no-repeat;
     display: flex;
     flex-direction: column;
     align-items: center;
